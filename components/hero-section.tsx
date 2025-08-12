@@ -30,11 +30,10 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut",
+      ease: "easeOut", // Use string for easing
     },
   },
 };
-
 const floatingVariants = {
   animate: {
     y: [-10, 10, -10],
@@ -48,7 +47,7 @@ const floatingVariants = {
 
 export default function HeroSection() {
   return (
-    <section id="about" className="py-12 md:py-20 relative">
+    <section id="about" className="pt-32 pb-12 md:py-20 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
