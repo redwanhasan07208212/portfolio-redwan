@@ -48,31 +48,35 @@ const floatingVariants = {
 
 export default function HeroSection() {
   return (
-    <section id="about" className="py-20 relative">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-12 md:py-20 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="max-w-6xl mx-auto"
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={itemVariants} className="text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Text content */}
+            <motion.div
+              variants={itemVariants}
+              className="text-center lg:text-left order-2 lg:order-1"
+            >
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full px-4 py-2 mb-6"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full px-3 sm:px-4 py-2 mb-4 sm:mb-6 justify-center lg:justify-start"
               >
-                <Sparkles className="w-4 h-4 text-blue-400" />
-                <span className="text-blue-300 text-sm font-medium">
+                <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" />
+                <span className="text-blue-300 text-xs sm:text-sm font-medium">
                   Available for opportunities
                 </span>
               </motion.div>
 
               <motion.h2
                 variants={itemVariants}
-                className="text-6xl lg:text-7xl font-bold mb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight"
               >
                 <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
                   Frontend
@@ -85,7 +89,7 @@ export default function HeroSection() {
 
               <motion.p
                 variants={itemVariants}
-                className="text-xl text-slate-300 mb-8 leading-relaxed"
+                className="text-sm sm:text-base md:text-lg text-slate-300 mb-6 sm:mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0"
               >
                 I craft beautiful, performant web experiences with React.js,
                 Next.js, and TypeScript. Passionate about clean code and solving
@@ -94,29 +98,32 @@ export default function HeroSection() {
 
               <motion.div
                 variants={itemVariants}
-                className="flex flex-wrap items-center gap-4 mb-8"
+                className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8"
               >
-                <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 rounded-full px-4 py-2">
-                  <MapPin className="w-4 h-4 text-blue-400" />
-                  <span>Dhaka, Bangladesh</span>
+                <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 rounded-full px-3 sm:px-4 py-2">
+                  <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" />
+                  <span className="text-xs sm:text-sm">Dhaka, Bangladesh</span>
                 </div>
-                <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 rounded-full px-4 py-2">
-                  <Code className="w-4 h-4 text-purple-400" />
-                  <span>2+ Years Experience</span>
+                <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 rounded-full px-3 sm:px-4 py-2">
+                  <Code className="w-3 h-3 sm:w-4 sm:h-4 text-purple-400" />
+                  <span className="text-xs sm:text-sm">
+                    3+ Years Experience
+                  </span>
                 </div>
               </motion.div>
 
               <motion.div
                 variants={itemVariants}
-                className="flex flex-wrap items-center gap-4"
+                className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-4"
               >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto"
                 >
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0"
+                    className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0"
                   >
                     <a
                       href="mailto:redwanhasancse@gmail.com"
@@ -131,16 +138,18 @@ export default function HeroSection() {
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto"
                 >
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white bg-transparent"
+                    className="w-full sm:w-auto border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white bg-transparent"
                   >
                     <a
                       href="/public/redwan-hasan-resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center"
-                      download
                     >
                       <Download className="w-4 h-4 mr-2" />
                       Download CV
@@ -148,7 +157,7 @@ export default function HeroSection() {
                   </Button>
                 </motion.div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center sm:justify-start gap-3 mt-2 sm:mt-0">
                   <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
                     <Button
                       size="sm"
@@ -183,26 +192,27 @@ export default function HeroSection() {
               </motion.div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="relative">
+            {/* Image */}
+            <motion.div
+              variants={itemVariants}
+              className="relative order-1 lg:order-2 mb-8 lg:mb-0 flex justify-center lg:justify-end"
+            >
               <motion.div
                 variants={floatingVariants}
                 animate="animate"
                 className="relative z-10"
               >
-                <div className="w-80 h-80 mx-auto bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl backdrop-blur-sm border border-slate-700/50 flex items-center justify-center">
-                  <div className="rounded-3xl">
-                    <Image
-                      src="/profile.jpg"
-                      alt="Redwan Hasan Profile Picture"
-                      height={200}
-                      width={200}
-                      className="rounded-3xl object-cover shadow-lg"
-                    />
-                  </div>
+                <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl backdrop-blur-sm border border-slate-700/50 flex items-center justify-center">
+                  <Image
+                    src="/profile.jpg"
+                    alt="Redwan Hasan"
+                    width={180}
+                    height={180}
+                    className="rounded-3xl object-cover"
+                  />
                 </div>
               </motion.div>
 
-              {/* Floating Tech Icons */}
               <motion.div
                 animate={{
                   rotate: 360,
@@ -212,17 +222,23 @@ export default function HeroSection() {
                   repeat: Number.POSITIVE_INFINITY,
                   ease: "linear",
                 }}
-                className="absolute inset-0"
+                className="absolute inset-0 pointer-events-none"
               >
                 {[
-                  { icon: "⚛️", position: "top-4 left-4" },
-                  { icon: "📱", position: "top-4 right-4" },
-                  { icon: "🚀", position: "bottom-4 left-4" },
-                  { icon: "💻", position: "bottom-4 right-4" },
+                  { icon: "⚛️", position: "top-2 left-2 sm:top-4 sm:left-4" },
+                  { icon: "📱", position: "top-2 right-2 sm:top-4 sm:right-4" },
+                  {
+                    icon: "🚀",
+                    position: "bottom-2 left-2 sm:bottom-4 sm:left-4",
+                  },
+                  {
+                    icon: "💻",
+                    position: "bottom-2 right-2 sm:bottom-4 sm:right-4",
+                  },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
-                    className={`absolute ${item.position} text-2xl`}
+                    className={`absolute ${item.position} text-xl sm:text-2xl`}
                     animate={{
                       rotate: -360,
                       scale: [1, 1.2, 1],

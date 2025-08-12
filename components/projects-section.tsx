@@ -1,29 +1,37 @@
-"use client"
+"use client";
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink } from "lucide-react"
-import { motion } from "framer-motion"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-20 relative">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="py-12 md:py-20 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-4">
             Featured Projects
           </h2>
-          <p className="text-slate-400 text-lg">Some of my recent work that I'm proud of</p>
+          <p className="text-slate-400 text-base sm:text-lg">
+            Some of my recent work that I'm proud of
+          </p>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {[
             {
               title: "MediCare",
@@ -66,21 +74,32 @@ export default function ProjectsSection() {
               <Card
                 className={`bg-gradient-to-br ${project.gradient} backdrop-blur-sm border ${project.border} hover:border-opacity-60 transition-all duration-300 h-full`}
               >
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <CardTitle className="text-xl text-white mb-2">{project.title}</CardTitle>
-                      <CardDescription className="text-slate-300">{project.description}</CardDescription>
+                <CardHeader className="pb-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <CardTitle className="text-lg sm:text-xl text-white mb-2">
+                        {project.title}
+                      </CardTitle>
+                      <CardDescription className="text-sm sm:text-base text-slate-300">
+                        {project.description}
+                      </CardDescription>
                     </div>
-                    <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
-                      <Button size="sm" variant="ghost" className="text-slate-400 hover:text-blue-400">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="flex-shrink-0"
+                    >
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="text-slate-400 hover:text-blue-400"
+                      >
                         <ExternalLink className="w-4 h-4" />
                       </Button>
                     </motion.div>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2 text-sm text-slate-300 mb-6">
+                  <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-slate-300 mb-4 sm:mb-6">
                     {project.features.map((feature, featureIndex) => (
                       <motion.li
                         key={featureIndex}
@@ -91,11 +110,11 @@ export default function ProjectsSection() {
                         className="flex items-start gap-2"
                       >
                         <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>{feature}</span>
+                        <span className="leading-relaxed">{feature}</span>
                       </motion.li>
                     ))}
                   </ul>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {project.tech.map((tech, techIndex) => (
                       <motion.div
                         key={tech}
@@ -107,7 +126,7 @@ export default function ProjectsSection() {
                       >
                         <Badge
                           variant="outline"
-                          className="border-slate-600 text-slate-300 hover:border-blue-400 hover:text-blue-400 transition-colors"
+                          className="border-slate-600 text-slate-300 hover:border-blue-400 hover:text-blue-400 transition-colors text-xs sm:text-sm px-2 py-1"
                         >
                           {tech}
                         </Badge>
@@ -121,5 +140,5 @@ export default function ProjectsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
