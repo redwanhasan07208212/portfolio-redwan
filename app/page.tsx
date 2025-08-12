@@ -3,7 +3,7 @@
 import { Github, Linkedin, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import HeroSection from "@/components/hero-section";
 import SkillsSection from "@/components/skills-section";
 import ExperienceSection from "@/components/experience-section";
@@ -12,17 +12,7 @@ import EducationSection from "@/components/education-section";
 import ContactSection from "@/components/contact-section";
 
 export default function Portfolio() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", updateMousePosition);
-    return () => window.removeEventListener("mousemove", updateMousePosition);
-  }, []);
 
   const handleLinkClick = () => {
     setIsMobileMenuOpen(false);
@@ -70,106 +60,90 @@ export default function Portfolio() {
         />
       </div>
 
-      {/* Mouse Follower */}
-      <motion.div
-        className="fixed top-0 left-0 w-6 h-6 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full pointer-events-none z-50 mix-blend-difference"
-        animate={{
-          x: mousePosition.x - 12,
-          y: mousePosition.y - 12,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 28,
-        }}
-      />
-
       {/* Header */}
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="sticky top-0 z-40 bg-slate-900/80 backdrop-blur-xl border-b border-slate-700/50"
+        className="fixed top-0 left-0 w-full z-40 bg-slate-900/40 backdrop-blur-md border-b border-slate-800"
       >
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center justify-between">
-            <motion.h1
-              whileHover={{ scale: 1.05 }}
-              className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
-            >
-              Redwan Hasan
-            </motion.h1>
+        <div className="container mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
+          <motion.h1
+            whileHover={{ scale: 1.05 }}
+            className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+          >
+            Redwan Hasan
+          </motion.h1>
 
-            <div className="hidden md:flex items-center gap-6">
-              {["About", "Skills", "Experience", "Projects", "Contact"].map(
-                (item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 + 0.5 }}
+          <div className="hidden md:flex items-center gap-8">
+            {["About", "Skills", "Experience", "Projects", "Contact"].map(
+              (item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 + 0.5 }}
+                >
+                  <Link
+                    href={`#${item.toLowerCase()}`}
+                    className="text-white hover:text-blue-400 transition-all duration-300 relative group font-medium"
                   >
-                    <Link
-                      href={`#${item.toLowerCase()}`}
-                      className="text-slate-300 hover:text-blue-400 transition-all duration-300 relative group"
-                    >
-                      {item}
-                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300" />
-                    </Link>
-                  </motion.div>
-                )
-              )}
-            </div>
-
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-slate-300 hover:text-blue-400 transition-colors p-2"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </motion.button>
-          </nav>
-
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="md:hidden mt-4 pb-4 border-t border-slate-700/50"
-              >
-                <div className="flex flex-col gap-4 pt-4">
-                  {["About", "Skills", "Experience", "Projects", "Contact"].map(
-                    (item, index) => (
-                      <motion.div
-                        key={item}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                      >
-                        <Link
-                          href={`#${item.toLowerCase()}`}
-                          onClick={handleLinkClick}
-                          className="text-slate-300 hover:text-blue-400 transition-all duration-300 relative group block py-2"
-                        >
-                          {item}
-                          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300" />
-                        </Link>
-                      </motion.div>
-                    )
-                  )}
-                </div>
-              </motion.div>
+                    {item}
+                    <span className="absolute left-1/2 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full group-hover:left-0 transition-all duration-300" />
+                  </Link>
+                </motion.div>
+              )
             )}
-          </AnimatePresence>
+          </div>
+
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden text-white hover:text-blue-400 transition-colors p-2"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </motion.button>
         </div>
       </motion.header>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.aside
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed top-0 right-0 h-full w-full bg-slate-900/95 backdrop-blur-md border-l border-slate-700/50 z-50 flex flex-col p-8 md:hidden"
+          >
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="self-end mb-8 text-white hover:text-blue-400 transition-colors"
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            <nav className="flex flex-col gap-6">
+              {["About", "Skills", "Experience", "Projects", "Contact"].map(
+                (item) => (
+                  <Link
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={handleLinkClick}
+                    className="text-white hover:text-blue-400 text-2xl font-semibold p-2"
+                  >
+                    {item}
+                  </Link>
+                )
+              )}
+            </nav>
+          </motion.aside>
+        )}
+      </AnimatePresence>
 
       <HeroSection />
       <SkillsSection />
