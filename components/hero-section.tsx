@@ -57,16 +57,15 @@ export default function HeroSection() {
           className="max-w-6xl mx-auto"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Text content */}
             <motion.div
               variants={itemVariants}
-              className="text-center lg:text-left order-2 lg:order-1"
+              className="text-left order-2 lg:order-1"
             >
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full px-3 sm:px-4 py-2 mb-4 sm:mb-6 justify-center lg:justify-start"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full px-3 sm:px-4 py-2 mb-4 sm:mb-6 md:justify-center md:items-center"
               >
                 <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" />
                 <span className="text-blue-300 text-xs sm:text-sm font-medium">
@@ -76,7 +75,7 @@ export default function HeroSection() {
 
               <motion.h2
                 variants={itemVariants}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6"
               >
                 <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
                   Frontend
@@ -89,7 +88,7 @@ export default function HeroSection() {
 
               <motion.p
                 variants={itemVariants}
-                className="text-sm sm:text-base md:text-lg text-slate-300 mb-6 sm:mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0"
+                className="text-base sm:text-lg md:text-xl text-slate-300 mb-6 sm:mb-8 leading-relaxed"
               >
                 I craft beautiful, performant web experiences with React.js,
                 Next.js, and TypeScript. Passionate about clean code and solving
@@ -98,23 +97,21 @@ export default function HeroSection() {
 
               <motion.div
                 variants={itemVariants}
-                className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8"
+                className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
               >
                 <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 rounded-full px-3 sm:px-4 py-2">
                   <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" />
-                  <span className="text-xs sm:text-sm">Dhaka, Bangladesh</span>
+                  <span className="text-sm">Dhaka, Bangladesh</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 rounded-full px-3 sm:px-4 py-2">
                   <Code className="w-3 h-3 sm:w-4 sm:h-4 text-purple-400" />
-                  <span className="text-xs sm:text-sm">
-                    3+ Years Experience
-                  </span>
+                  <span className="text-sm">3+ Years Experience</span>
                 </div>
               </motion.div>
 
               <motion.div
                 variants={itemVariants}
-                className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-4"
+                className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-4"
               >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
@@ -192,24 +189,25 @@ export default function HeroSection() {
               </motion.div>
             </motion.div>
 
-            {/* Image */}
             <motion.div
               variants={itemVariants}
-              className="relative order-1 lg:order-2 mb-8 lg:mb-0 flex justify-center lg:justify-end"
+              className="relative order-1 lg:order-2 mb-8 lg:mb-0"
             >
               <motion.div
                 variants={floatingVariants}
                 animate="animate"
                 className="relative z-10"
               >
-                <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl backdrop-blur-sm border border-slate-700/50 flex items-center justify-center">
-                  <Image
-                    src="/profile.jpg"
-                    alt="Redwan Hasan"
-                    width={180}
-                    height={180}
-                    className="rounded-3xl object-cover"
-                  />
+                <div className="w-64 h-64 sm:w-80 sm:h-80 mx-auto bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl backdrop-blur-sm border border-slate-700/50 flex items-center justify-center">
+                  <div className="text-6xl sm:text-8xl">
+                    <Image
+                      src="/profile.jpg"
+                      alt="Redwan Hasan"
+                      width={200}
+                      height={200}
+                      className="rounded-3xl object-cover"
+                    />
+                  </div>
                 </div>
               </motion.div>
 
@@ -222,7 +220,7 @@ export default function HeroSection() {
                   repeat: Number.POSITIVE_INFINITY,
                   ease: "linear",
                 }}
-                className="absolute inset-0 pointer-events-none"
+                className="absolute inset-0"
               >
                 {[
                   { icon: "⚛️", position: "top-2 left-2 sm:top-4 sm:left-4" },
