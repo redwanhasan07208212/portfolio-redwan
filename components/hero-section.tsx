@@ -118,8 +118,13 @@ export default function HeroSection() {
                     size="lg"
                     className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0"
                   >
-                    <Mail className="w-4 h-4 mr-2" />
-                    Get In Touch
+                    <a
+                      href="mailto:redwanhasancse@gmail.com"
+                      className="flex items-center"
+                    >
+                      <Mail className="w-4 h-4 mr-2" />
+                      Get In Touch
+                    </a>
                   </Button>
                 </motion.div>
 
@@ -132,8 +137,14 @@ export default function HeroSection() {
                     variant="outline"
                     className="border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white bg-transparent"
                   >
-                    <Download className="w-4 h-4 mr-2" />
-                    Download CV
+                    <a
+                      href="/public/redwan-hasan-resume.pdf"
+                      className="flex items-center"
+                      download
+                    >
+                      <Download className="w-4 h-4 mr-2" />
+                      Download CV
+                    </a>
                   </Button>
                 </motion.div>
 
@@ -146,7 +157,7 @@ export default function HeroSection() {
                       className="text-slate-400 hover:text-blue-400"
                     >
                       <Link
-                        href="https://github.com/redwanhasan"
+                        href="https://github.com/redwanhasan07208212"
                         target="_blank"
                       >
                         <Github className="w-5 h-5" />
@@ -161,7 +172,7 @@ export default function HeroSection() {
                       className="text-slate-400 hover:text-blue-400"
                     >
                       <Link
-                        href="https://linkedin.com/in/redwanhasan"
+                        href="https://www.linkedin.com/in/redwan-hasan/"
                         target="_blank"
                       >
                         <Linkedin className="w-5 h-5" />
